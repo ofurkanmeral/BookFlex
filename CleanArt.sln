@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D6BEF9B3-68DD-4BFF-A124-21C325AFD377}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{9561185D-7D9F-4BC9-9909-3324F9C20EB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArt.Domain", "src\CleanArt.Domain\CleanArt.Domain.csproj", "{4CAD343D-1037-4B77-B623-B9077B850960}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArt.Application", "src\CleanArt.Application\CleanArt.Application.csproj", "{43073490-03F2-4B45-BEA5-F7AA5CDD4959}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4CAD343D-1037-4B77-B623-B9077B850960}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CAD343D-1037-4B77-B623-B9077B850960}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CAD343D-1037-4B77-B623-B9077B850960}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CAD343D-1037-4B77-B623-B9077B850960}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43073490-03F2-4B45-BEA5-F7AA5CDD4959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43073490-03F2-4B45-BEA5-F7AA5CDD4959}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43073490-03F2-4B45-BEA5-F7AA5CDD4959}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43073490-03F2-4B45-BEA5-F7AA5CDD4959}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4CAD343D-1037-4B77-B623-B9077B850960} = {D6BEF9B3-68DD-4BFF-A124-21C325AFD377}
+		{43073490-03F2-4B45-BEA5-F7AA5CDD4959} = {D6BEF9B3-68DD-4BFF-A124-21C325AFD377}
+	EndGlobalSection
+EndGlobal

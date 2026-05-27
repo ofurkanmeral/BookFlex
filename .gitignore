@@ -1,0 +1,93 @@
+## Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+artifacts/
+
+## Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Rider / JetBrains
+.idea/
+*.sln.iml
+
+## VS Code
+.vscode/
+
+## NuGet
+*.nupkg
+*.snupkg
+packages/
+!packages/build/
+.nuget/
+*.nuget.props
+*.nuget.targets
+
+## Logs
+*.log
+logs/
+
+## Test Results
+[Tt]est[Rr]esult*/
+[Bb]enchmarkDotNet.Artifacts/
+
+## Publish output
+publish/
+wwwroot/dist/
+
+## EF Core
+Migrations/*.Designer.cs
+*.dbmdl
+
+## SQL / Local DB
+*.mdf
+*.ldf
+*.ndf
+*.sqlite
+*.sqlite3
+*.db
+
+## User-specific
+*.rsuser
+*.userprefs
+
+## Azure
+PublishProfiles/
+*.azurePubxml
+
+## App secrets
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+.env
+.env.*
+
+## Node (frontend varsa)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+
+## Docker
+docker-compose.override.yml
+
+## OS files
+.DS_Store
+Thumbs.db
+
+## Resharper
+_ReSharper*/
+*.DotSettings.user
+
+## Generated files
+Generated/
+*.generated.cs
