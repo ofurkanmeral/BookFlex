@@ -1,4 +1,5 @@
-﻿using CleanArt.Domain.Bookings;
+﻿using CleanArt.Application.Abstractions.Behaviors;
+using CleanArt.Domain.Bookings;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace CleanArt.Application
             services.AddMediatR(configuration =>
             {
                 configuration.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly);
+
+                configuration.AddOpenBehavior(typeof(LoggingBehaivor<,>));
             });
             services.AddTransient<PricingService>();
             return services;
