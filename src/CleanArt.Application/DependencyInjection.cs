@@ -1,5 +1,6 @@
 ﻿using CleanArt.Application.Abstractions.Behaviors;
 using CleanArt.Domain.Bookings;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,12 @@ namespace CleanArt.Application
                 configuration.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly);
 
                 configuration.AddOpenBehavior(typeof(LoggingBehaivor<,>));
+
+                configuration.AddOpenBehavior(typeof(ValidationBehaivor<,>));
             });
+
+            services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
+
             services.AddTransient<PricingService>();
             return services;
         }

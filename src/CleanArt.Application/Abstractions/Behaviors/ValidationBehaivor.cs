@@ -1,0 +1,48 @@
+﻿using CleanArt.Application.Abstractions.Messaging.Command;
+using CleanArt.Application.Exceptions;
+using FluentValidation;
+using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CleanArt.Application.Abstractions.Behaviors
+{
+    public class ValidationBehaivor<TRequest, TResponse>
+        : IPipelineBehavior<TRequest, TResponse>
+        where TRequest : IBaseCommand
+    {
+
+        private readonly IEnumerable<IValidator<TRequest>> _validators;
+
+        public async Task<TResponse> Handle(
+            TRequest request,
+            RequestHandlerDelegate<TResponse> next, 
+            CancellationToken cancellationToken)
+        {
+            if(!_validators.Any())
+            {
+                return await next();
+            }
+
+            var context = new ValidationContext<TRequest>(request);
+
+            var valitationErrors = _validators
+                .Select(validator => validator.Validate(context))
+                .Where(validationResult => validationResult.Errors.Any())
+                .SelectMany(validationResult => validationResult.Errors)
+                .Select(validationFailure => new ValidationError(
+                    validationFailure.PropertyName,
+                    validationFailure.ErrorMessage))
+                .ToList();
+
+            if(valitationErrors.Any())
+            {
+                throw new Exceptions.ValidationException(valitationErrors);
+            }
+            return await next();
+        }
+    }
+}
