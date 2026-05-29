@@ -11,6 +11,8 @@ namespace CleanArt.Domain.Abstractions
     {
         private readonly List<IDomaintEvent> _domainEvents = new();
 
+        protected Entity() { }
+
         protected Entity(Guid id) 
         {
             Id=id;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CleanArt.Application.Abstractions.Email
 {
-    internal interface IEmailService
+    public interface IEmailService
     {
         Task SendAsync(Domain.Users.Email reciptient,string subject,string body);
     }

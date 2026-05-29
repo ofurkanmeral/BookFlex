@@ -29,10 +29,10 @@ namespace CleanArt.Application.Booking.ReserveBooking
 
         public async Task Handle(BookingReservedDomainEvent notification, CancellationToken cancellationToken)
         {
-            var booking = await _bookingRepository.GetByIdASync(notification.Id, cancellationToken);
+            var booking = await _bookingRepository.GetByIdAsync(notification.Id, cancellationToken);
             if (booking == null) return;
 
-            var user = await _userRepository.GetByIdAsync(booking.userId, cancellationToken);
+            var user = await _userRepository.GetByIdAsync(booking.UserId, cancellationToken);
             if (user == null) return;
 
             await _emailService.SendAsync(

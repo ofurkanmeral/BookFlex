@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArt.Domain", "src\Clea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArt.Application", "src\CleanArt.Application\CleanArt.Application.csproj", "{43073490-03F2-4B45-BEA5-F7AA5CDD4959}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArt.Infrastructure", "src\CleanArt.Infrastructure\CleanArt.Infrastructure.csproj", "{E2FD555A-620B-44BE-9260-BC20A6DB7E3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArt.API", "src\CleanArt.API\CleanArt.API.csproj", "{B5BE6FAC-0101-4709-B1A1-2BE269AA0302}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{AF4219FA-5D33-4F53-81EC-785F0BA921A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +31,18 @@ Global
 		{43073490-03F2-4B45-BEA5-F7AA5CDD4959}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43073490-03F2-4B45-BEA5-F7AA5CDD4959}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43073490-03F2-4B45-BEA5-F7AA5CDD4959}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2FD555A-620B-44BE-9260-BC20A6DB7E3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2FD555A-620B-44BE-9260-BC20A6DB7E3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2FD555A-620B-44BE-9260-BC20A6DB7E3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2FD555A-620B-44BE-9260-BC20A6DB7E3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5BE6FAC-0101-4709-B1A1-2BE269AA0302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5BE6FAC-0101-4709-B1A1-2BE269AA0302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5BE6FAC-0101-4709-B1A1-2BE269AA0302}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5BE6FAC-0101-4709-B1A1-2BE269AA0302}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF4219FA-5D33-4F53-81EC-785F0BA921A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF4219FA-5D33-4F53-81EC-785F0BA921A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF4219FA-5D33-4F53-81EC-785F0BA921A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF4219FA-5D33-4F53-81EC-785F0BA921A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,5 +50,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{4CAD343D-1037-4B77-B623-B9077B850960} = {D6BEF9B3-68DD-4BFF-A124-21C325AFD377}
 		{43073490-03F2-4B45-BEA5-F7AA5CDD4959} = {D6BEF9B3-68DD-4BFF-A124-21C325AFD377}
+		{E2FD555A-620B-44BE-9260-BC20A6DB7E3B} = {D6BEF9B3-68DD-4BFF-A124-21C325AFD377}
+		{B5BE6FAC-0101-4709-B1A1-2BE269AA0302} = {D6BEF9B3-68DD-4BFF-A124-21C325AFD377}
 	EndGlobalSection
 EndGlobal

@@ -1,4 +1,7 @@
-## Build results
+#################################################
+# BUILD OUTPUTS
+#################################################
+
 [Bb]in/
 [Oo]bj/
 [Dd]ebug/
@@ -7,47 +10,65 @@ x64/
 x86/
 build/
 artifacts/
+publish/
 
-## Visual Studio
+#################################################
+# VISUAL STUDIO
+#################################################
+
 .vs/
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
+*.rsuser
 
-## Rider / JetBrains
+#################################################
+# RIDER / JETBRAINS
+#################################################
+
 .idea/
 *.sln.iml
 
-## VS Code
+#################################################
+# VS CODE
+#################################################
+
 .vscode/
 
-## NuGet
+#################################################
+# NUGET
+#################################################
+
 *.nupkg
 *.snupkg
 packages/
 !packages/build/
-.nuget/
-*.nuget.props
-*.nuget.targets
 
-## Logs
+#################################################
+# LOG FILES
+#################################################
+
 *.log
 logs/
 
-## Test Results
+#################################################
+# TEST RESULTS
+#################################################
+
 [Tt]est[Rr]esult*/
 [Bb]enchmarkDotNet.Artifacts/
 
-## Publish output
-publish/
-wwwroot/dist/
+#################################################
+# ENTITY FRAMEWORK
+#################################################
 
-## EF Core
-Migrations/*.Designer.cs
 *.dbmdl
 
-## SQL / Local DB
+#################################################
+# DATABASE FILES
+#################################################
+
 *.mdf
 *.ldf
 *.ndf
@@ -55,39 +76,69 @@ Migrations/*.Designer.cs
 *.sqlite3
 *.db
 
-## User-specific
-*.rsuser
-*.userprefs
+#################################################
+# AZURE
+#################################################
 
-## Azure
 PublishProfiles/
 *.azurePubxml
 
-## App secrets
+#################################################
+# APP SETTINGS / SECRETS
+#################################################
+
 appsettings.Development.json
 appsettings.Local.json
-secrets.json
+
 .env
 .env.*
 
-## Node (frontend varsa)
+!.env.example
+
+secrets.json
+
+#################################################
+# NODE
+#################################################
+
 node_modules/
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-dist/
 
-## Docker
+#################################################
+# DOCKER
+#################################################
+
 docker-compose.override.yml
 
-## OS files
+#################################################
+# OPERATING SYSTEM
+#################################################
+
 .DS_Store
 Thumbs.db
 
-## Resharper
+#################################################
+# RESHARPER
+#################################################
+
 _ReSharper*/
 *.DotSettings.user
 
-## Generated files
+#################################################
+# GENERATED FILES
+#################################################
+
 Generated/
 *.generated.cs
+
+
+#################################################
+# DOCKER / POSTGRES DATA
+#################################################
+
+containers/database/
+postgres-data/
+pgdata/

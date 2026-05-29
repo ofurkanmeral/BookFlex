@@ -10,7 +10,7 @@ namespace CleanArt.Application.Exceptions
     {
         public ValidationException(IEnumerable<ValidationError> errors)
         {
-            errors = errors;
+            Errors = errors;
         }
 
         public IEnumerable<ValidationError> Errors { get; }

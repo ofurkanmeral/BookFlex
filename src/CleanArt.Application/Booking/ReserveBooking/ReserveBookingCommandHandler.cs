@@ -1,7 +1,9 @@
 ﻿using CleanArt.Application.Abstractions.Messaging.Command;
+using CleanArt.Application.Exceptions;
 using CleanArt.Domain.Abstractions;
 using CleanArt.Domain.Apartments;
 using CleanArt.Domain.Bookings;
+using CleanArt.Domain.Bookings.Exceptions;
 using CleanArt.Domain.Users;
 using System;
 using System.Collections.Generic;
@@ -55,15 +57,25 @@ namespace CleanArt.Application.Booking.ReserveBooking
                 return Result.Failure<Guid>(new Error("2222", "Doluuu"));
             }
 
-            var booking = Booking.Reserve(
-                apartment,
-                user.Id,
-                duration,
-                _pricingService);
+            try
+            {
+                var booking = Domain.Bookings.Booking.Reserve(
+              apartment,
+              user.Id,
+              duration,
+              _pricingService);
 
-            _bookingRepository.Add(booking);
-            await _unitOfWork.SaveChangesAsync();
-            return booking.Id;
+                _bookingRepository.Add(booking);
+                await _unitOfWork.SaveChangesAsync();
+                return booking.Id;
+            }
+            catch (ConcurrencyException)
+            {
+                return Result.Failure<Guid>(BookingErrors.Overlap);
+                throw;
+            }
+
+          
         }
     }
 }

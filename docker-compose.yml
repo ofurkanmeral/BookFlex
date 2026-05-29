@@ -1,0 +1,20 @@
+services:
+  cleanart.api:
+    image: ${DOCKER_REGISTRY-}cleanartapi
+    build:
+      context: .
+      dockerfile: src/CleanArt.API/Dockerfile
+    depends_on: 
+      - cleanArt-db
+
+  cleanArt-db:
+    image: postgres:latest
+    container_name: cleanArt.Db
+    environment:
+     - POSTGRES_DB=clean
+     - POSTGRES_USER=postgres
+     - POSTGRES_PASSWORD=postgres
+    volumes:
+     - ./containers/database:/var/lib/postgresql
+    ports:
+     - 5432:5432  
