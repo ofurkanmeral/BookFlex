@@ -4,17 +4,37 @@ services:
     build:
       context: .
       dockerfile: src/CleanArt.API/Dockerfile
-    depends_on: 
+    depends_on:
       - cleanArt-db
+    ports:
+      - "54340:8080"
+      - "54341:8081"
+    environment:
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
 
   cleanArt-db:
     image: postgres:latest
     container_name: cleanArt.Db
     environment:
-     - POSTGRES_DB=clean
-     - POSTGRES_USER=postgres
-     - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=clean
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     volumes:
-     - ./containers/database:/var/lib/postgresql
+      - ./containers/database:/var/lib/postgresql/data
     ports:
-     - 5432:5432  
+      - "5432:5432"
+  cleanart-idp:
+        image: quay.io/keycloak/keycloak:latest
+        container_name: CleanArt.Identity
+        environment:
+         KEYCLOAK_ADMIN: admin
+         KEYCLOAK_ADMIN_PASSWORD: admin
+        command:
+        - start-dev
+        - --import-realm
+        volumes:
+        - ./containers/identity:/opt/keycloak/data
+        - ./.files/cleanart-realm-export.json:/opt/keycloak/data/import/cleanart-realm-export.json
+        ports:
+        - "18080:8080"

@@ -1,4 +1,5 @@
-﻿using CleanArt.Infrastructure;
+﻿using CleanArt.API.Middleware;
+using CleanArt.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanArt.API.Extensions
@@ -10,6 +11,11 @@ namespace CleanArt.API.Extensions
             using var scope=app.ApplicationServices.CreateScope();
             using var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
             dbContext.Database.Migrate();
+        }
+
+        public static void UseCustomExceptionHandler(this IApplicationBuilder app)
+        {
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
         }
     }
 }
