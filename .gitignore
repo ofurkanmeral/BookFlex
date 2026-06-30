@@ -142,3 +142,8 @@ Generated/
 containers/database/
 postgres-data/
 pgdata/
+
+
+# Docker/PostgreSQL local data
+containers/postgres/
+containers/identity/

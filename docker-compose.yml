@@ -21,7 +21,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:
-      - ./containers/database:/var/lib/postgresql/data
+        - ./containers/postgres:/var/lib/postgresql
     ports:
       - "5432:5432"
   cleanart-idp:
@@ -35,6 +35,6 @@ services:
         - --import-realm
         volumes:
         - ./containers/identity:/opt/keycloak/data
-        - ./.files/cleanart-realm-export.json:/opt/keycloak/data/import/cleanart-realm-export.json
+        - ./files/cleanart-realm-export.json:/opt/keycloak/data/import/cleanart-realm-export.json
         ports:
         - "18080:8080"

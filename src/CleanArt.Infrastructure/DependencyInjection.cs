@@ -5,10 +5,12 @@ using CleanArt.Domain.Apartments;
 using CleanArt.Domain.Bookings;
 using CleanArt.Domain.Reviews;
 using CleanArt.Domain.Users;
+using CleanArt.Infrastructure.Authentication;
 using CleanArt.Infrastructure.Data;
 using CleanArt.Infrastructure.Email;
 using CleanArt.Infrastructure.Repositories;
 using Dapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,6 +45,13 @@ namespace CleanArt.Infrastructure
             services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ApplicationDbContext>());
 
             services.AddSingleton<ISqlConnectionFactory>(_ => new SqlConnectionFactory(connectionString));
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer();
+
+            services.Configure<AuthenticationOptions>(configuration.GetSection("Authentication"));
+
+            services.ConfigureOptions<JwtBearerOptionsSetup>();
 
             SqlMapper.AddTypeHandler(new DateOnlyTypeHandler());
 
