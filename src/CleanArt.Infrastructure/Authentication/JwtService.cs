@@ -1,6 +1,7 @@
 ﻿using CleanArt.Application.Abstractions.Authentication;
 using CleanArt.Domain.Abstractions;
 using CleanArt.Infrastructure.Authentication.Models;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,10 +20,10 @@ namespace CleanArt.Infrastructure.Authentication
         private readonly HttpClient _httpClient;
         private readonly KeycloakOptions _keycloakOptions;
 
-        public JwtService(HttpClient httpClient, KeycloakOptions keycloakOptions)
+        public JwtService(HttpClient httpClient, IOptions<KeycloakOptions> keycloakOptions)
         {
             _httpClient = httpClient;
-            _keycloakOptions = keycloakOptions;
+            _keycloakOptions = keycloakOptions.Value;
         }
 
         public async Task<Result<string>> GetAccessTokenAsync(string email, string password, CancellationToken cancellationToken = default)
