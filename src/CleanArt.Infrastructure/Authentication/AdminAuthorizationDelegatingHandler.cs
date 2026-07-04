@@ -1,6 +1,7 @@
 ﻿using CleanArt.Infrastructure.Authentication.Models;
 using FluentValidation.Internal;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace CleanArt.Infrastructure.Authentication
         {
             _keycloakOptions = keycloakOptions.Value;
         }
-
+         
         protected override async Task<HttpResponseMessage> SendAsync(
             HttpRequestMessage request,
             CancellationToken cancellationToken)

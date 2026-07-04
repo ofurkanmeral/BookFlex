@@ -26,10 +26,12 @@ namespace CleanArt.Infrastructure.Configurations
                 .HasConversion(x=>x.Value, y=>new LastName(y)); 
 
             builder.Property(user => user.Email)
-                .HasMaxLength(255)
+                .HasMaxLength(256)
                 .HasConversion(x=>x.Value , y=>new Domain.Users.Email(y));
 
             builder.HasIndex(user => user.Email).IsUnique();
+
+            builder.HasIndex(user=>user.IdentityId).IsUnique();
         }
     }
 }

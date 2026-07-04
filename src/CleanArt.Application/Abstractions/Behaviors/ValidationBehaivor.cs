@@ -17,6 +17,11 @@ namespace CleanArt.Application.Abstractions.Behaviors
 
         private readonly IEnumerable<IValidator<TRequest>> _validators;
 
+        public ValidationBehaivor(IEnumerable<IValidator<TRequest>> validators)
+        {
+            _validators = validators;
+        }
+
         public async Task<TResponse> Handle(
             TRequest request,
             RequestHandlerDelegate<TResponse> next, 

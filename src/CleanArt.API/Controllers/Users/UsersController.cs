@@ -1,7 +1,7 @@
-﻿using CleanArt.Application.Users.RegisterUser;
+﻿using CleanArt.Application.Users.LogInUser;
+using CleanArt.Application.Users.RegisterUser;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArt.API.Controllers.Users
@@ -23,9 +23,9 @@ namespace CleanArt.API.Controllers.Users
             CancellationToken cancellationToken)
         {
             var command = new RegisterUserCommand(
+                request.Email, 
                 request.FirstName,
                 request.LastName,
-                request .Email,
                 request.Password);
 
             var result=await _sender.Send(command,cancellationToken);
@@ -35,6 +35,21 @@ namespace CleanArt.API.Controllers.Users
                 return BadRequest(result.Error);
             }
 
+            return Ok(result.Value);
+        }
+        [AllowAnonymous]
+        [HttpPost("login")]
+        public async Task<IActionResult>LogIn(
+            LoginUserRequest request,
+            CancellationToken cancellationToken)
+        {
+            var command = new LogInUserCommand(request.Email, request.Password);
+            var result = await _sender.Send(command, cancellationToken);
+
+            if(result.IsFailure)
+            {
+                return Unauthorized(result.Error);
+            }
             return Ok(result.Value);
         }
     }
