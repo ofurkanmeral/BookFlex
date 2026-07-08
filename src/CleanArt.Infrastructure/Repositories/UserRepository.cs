@@ -1,9 +1,5 @@
 ﻿using CleanArt.Domain.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace CleanArt.Infrastructure.Repositories
 {
@@ -11,6 +7,15 @@ namespace CleanArt.Infrastructure.Repositories
     {
         public UserRepository(ApplicationDbContext context) : base(context)
         {
+        }
+
+        public override void Add(User user)
+        {
+            foreach (var role in user.Roles)
+            {
+                _context.Attach(role);
+            }
+            _context.Add(user);
         }
     }
 }
