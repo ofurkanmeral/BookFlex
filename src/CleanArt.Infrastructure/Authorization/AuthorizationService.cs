@@ -28,5 +28,17 @@ namespace CleanArt.Infrastructure.Authorization
 
             return roles;
         }
+
+        public async Task<HashSet<string>>GetPermissionForUserAsync(string identityId)
+        {
+            var permissions=await _context.Set<User>()
+                .Where(user=>user.IdentityId==identityId)
+                .SelectMany(user=>user.Roles.Select(role=>role.Permissions))
+                .FirstAsync();
+
+            var permissionSet=permissions.Select(x=>x.Name).ToHashSet();
+
+            return permissionSet;
+        }
     }
 }
