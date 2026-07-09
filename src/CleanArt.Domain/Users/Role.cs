@@ -18,6 +18,6 @@ namespace CleanArt.Domain.Users
         public int Id { get; init; }
         public string Name { get; init; }
         public ICollection<User> Users { get; init; } = new List<User>();
-        public ICollection<Permission> Permissions {get;init;}=new List<Permission>();;
+        public ICollection<Permission> Permissions {get;init;}=new List<Permission>();
     }
 }
