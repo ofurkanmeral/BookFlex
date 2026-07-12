@@ -1,4 +1,5 @@
 ﻿using CleanArt.Application.Abstractions.Authentication;
+using CleanArt.Application.Abstractions.Cache;
 using CleanArt.Application.Abstractions.Data;
 using CleanArt.Application.Abstractions.Email;
 using CleanArt.Domain.Abstractions;
@@ -8,6 +9,7 @@ using CleanArt.Domain.Reviews;
 using CleanArt.Domain.Users;
 using CleanArt.Infrastructure.Authentication;
 using CleanArt.Infrastructure.Authentication.Models;
+using CleanArt.Infrastructure.Caching;
 using CleanArt.Infrastructure.Data;
 using CleanArt.Infrastructure.Email;
 using CleanArt.Infrastructure.Repositories;
@@ -53,13 +55,15 @@ namespace CleanArt.Infrastructure
 
             AddAuthentication(services, configuration);
 
+            AddCaching(services,configuration);
+
             return services;
         }
 
         private static void AddAuthentication(IServiceCollection services, IConfiguration configuration)
         {
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer();
+                .AddJwtBearer(opt => { });
 
             services.Configure<AuthenticationOptions>(configuration.GetSection("Authentication"));
 
@@ -82,6 +86,16 @@ namespace CleanArt.Infrastructure
 
                 httpClient.BaseAddress = new Uri(keycloakOptions.TokenUrl);
             });
+        }
+
+        private static void AddCaching(IServiceCollection services,IConfiguration configuration)
+        {
+            var connectionString=configuration.GetConnectionString("Cache") ??
+                throw new ArgumentNullException(nameof(configuration));
+
+            services.AddStackExchangeRedisCache(opt => opt.Configuration = connectionString);
+
+            services.AddSingleton<ICacheService, CacheService>();
         }
     }
 }

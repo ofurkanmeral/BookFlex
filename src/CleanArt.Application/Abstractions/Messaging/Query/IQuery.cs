@@ -10,6 +10,5 @@ namespace CleanArt.Application.Abstractions.Messaging.Query
 {
     public interface IQuery<TResponse> : IRequest<Result<TResponse>>
     {
-
     }
 }

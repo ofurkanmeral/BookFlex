@@ -25,16 +25,31 @@ services:
     ports:
       - "5432:5432"
   cleanart-idp:
-        image: quay.io/keycloak/keycloak:latest
-        container_name: CleanArt.Identity
-        environment:
-         KEYCLOAK_ADMIN: admin
-         KEYCLOAK_ADMIN_PASSWORD: admin
-        command:
-        - start-dev
-        - --import-realm
-        volumes:
-        - ./containers/identity:/opt/keycloak/data
-        - ./files/cleanart-realm-export.json:/opt/keycloak/data/import/cleanart-realm-export.json
-        ports:
-        - "18080:8080"
+    image: quay.io/keycloak/keycloak:latest
+    container_name: CleanArt.Identity
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    command:
+      - start-dev
+      - --import-realm
+    volumes:
+      - ./containers/identity:/opt/keycloak/data
+      - ./files/cleanart-realm-export.json:/opt/keycloak/data/import/cleanart-realm-export.json
+    ports:
+      - "18080:8080"
+  cleanart-seq:
+    image: datalust/seq:latest
+    container_name: Cleanart.Seq
+    environment:
+     ACCEPT_EULA: "Y"
+     SEQ_FIRSTRUN_ADMINPASSWORD: "Guclu-Bir-Sifre-123!"
+    ports:
+      - 5341:5341
+      - 8081:80 
+  cleanart-redis:
+    image: redis:latest
+    container_name: CleanArt.Redis
+    restart: always
+    ports:
+     - '6379:6379'  
